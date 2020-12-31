@@ -8,23 +8,35 @@
     <style>
       body{
         background-color:#09090e;
-        color:#e3e1e1; 
+        color:#ffffff; 
       }
     </style>
   </head>
 
 
   <body>
-    <div class="container-fluid text-center mt-5 mb-5">
-      <h2>INITIAL COMMIT POGGERS</h2>
-      <h3><p style="display:inline-block;color:#3091ff">{{ message }}</p> visits</h3>
+    <div class="container text-center mt-5 mb-5">
+      <h2 style="color:#ffffff">DOCKER-COMPOSE APP</h2>
+      <h3>current container id: <label style="color:#b2ee0c">{{hostname}}</label></h3>
+      <h3>visits: <label style="color:#2b92f3">{{counter}}</label></h3>
     </div>
-       
-      <!-- for each uporabnik add to sql -> map on screen prev users r?-->
 
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <div class="container text-center pt-5" style="color:rgb(187, 178, 178)">
+      <h5 class="mb-4">flask container graveyard :(</h5>
+      <!-- {{length}} -->
+      {% for c in containers %}
+        {% if c.id != hostname %}
+          <div class="m-2" style="display:inline-block">
+            <p style="margin:0;float:left">{{c["id"]}} ( <label style="color:#ff9900">{{c["visits"]}}</label> served in total )
+            </p>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
 
 </html>

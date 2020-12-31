@@ -11,6 +11,9 @@ services:
      - ./flask/:/code
     depends_on:
      - redis
+     - mongodb
+    environment:
+     - DB=mongodb://mongodb:27017
 
   redis:
     container_name: redis
@@ -25,3 +28,14 @@ services:
       - 80:80
     depends_on:
      - flask
+
+  mongodb:
+    container_name: mongodb
+    image: mongo
+    volumes:
+      - ./mongo/db:/data/db
+    # environment:
+      # MONGO_INITDB_ROOT_USERNAME: root
+      # MONGO_INITDB_ROOT_PASSWORD: password
+    ports:
+    - 27017:27017
